@@ -31,7 +31,7 @@ body{
     margin-top: -200px;
     text-transform: capitalize; 
     height: 40px;
-    background-color: rgb(44, 13, 13);
+    background-color:  lightblue;
     color: whitesmoke;
     border: 0;
     box-sizing: border-box;
@@ -41,6 +41,9 @@ body{
 .btn:hover{
     color: black;
     background: wheat;
+}
+.btn a{
+    text-decoration: none;
 }
 .btn2{
     background-color: lightskyblue;

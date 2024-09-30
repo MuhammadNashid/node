@@ -6,7 +6,7 @@ const {MongoClient}=require("mongodb");
 const { error } = require("console");
 // const { error } = require("console");
 const client= new MongoClient("mongodb://127.0.0.1:27017/");
-const PORT=3000;
+const PORT=4000;
 
 const app=http.createServer(async(req,res)=>{
     //create database
@@ -67,6 +67,16 @@ req.on("end",async()=>{
 
 
      }
+     //getDonors
 
+     if(path.pathname=="/getdonors"&&req.method=="GET"){
+        const data=await collection.find().toArray();
+        const json_data=JSON.stringify(data)
+        console.log(json_data);
+        
+
+        res.writeHead(200,{"Content-Type":"text/json"})
+        res.end(json_data)
+     }
 })
 app.listen(PORT);

@@ -1,11 +1,12 @@
 const http=require("http")
 const fs=require("fs")
 const url=require("url")
+const port=3000;
+
 const queryString=require("querystring")
 const {MongoClient, ObjectId}=require("mongodb");
 const { error } = require("console");
 const client= new MongoClient('mongodb://127.0.0.1:27017/');
-const PORT=3000;
 
 const app=http.createServer(async(req,res)=>{
     //create database
@@ -36,14 +37,14 @@ else if(path.pathname=='/js/custom.js'){
     res.writeHead(200,{"Content-Type":"text/js"});
     res.end(fs.readFileSync('../clientside/js/custom.js'));
 }
-else if(path.pathname=='/add'){
-    res.writeHead(200,{"Content-Type":"text/js"});
-    res.end(fs.readFileSync('../clientside/js/add.js'));
-}
-if(path.pathname=='/sumbit' && req.method=="POST"){
+// else if(path.pathname=='/js/add.js'){
+//     res.writeHead(200,{"Content-Type":"text/js"});
+//     res.end(fs.readFileSync('../clientside/js/add.js'));
+// }
+else if(path.pathname=="/sumbit"&& req.method=="POST"){
     console.log("hai");
-    let body='';
-    req.on("data",(chunks)=>{
+    let body="";
+    req.on("datas",(chunks)=>{
         console.log(chunks);
 
         body+=chunks.toString();
@@ -51,7 +52,7 @@ if(path.pathname=='/sumbit' && req.method=="POST"){
         
     });
 req.on("end",async()=>{
-    if(body!=null){
+    if(body!==null){
         const formData=queryString.parse(body);
         console.log(formData);
         collection.insertOne(formData).then(()=>{
@@ -60,7 +61,7 @@ console.log("data added");
             console.log(error);
         })
         res.writeHead(200,{"Content-Type":"text/html"});
-    res.end(fs.readFileSync("../clientside/index.html"))
+    res.end(fs.readFileSync("../clientside/pages/index.html"))
     }
 })
 
@@ -68,14 +69,14 @@ console.log("data added");
      }
      //getDonors
 
-    else if(path.pathname=='/getdonor' && req.method=='GET'){
+    else if(path.pathname=="/getdonor"&&req.method=='GET'){
         const data=await collection.find().toArray();
         const json_data=JSON.stringify(data)
         console.log(json_data);
         res.writeHead(200,{"Content-Type":"text/json"})
         res.end(json_data)
      }
-    else if(path.pathname=='/delete' && req.method=='DELETE'){
+    else if(path.pathname=="/delete"&& req.method=='DELETE'){
         console.log("=========================DELETE==========================");
         
         let body=''
@@ -88,7 +89,7 @@ console.log("data added");
             let _id=new ObjectId(body)
             console.log(_id);
             await collection.deleteOne({_id}).then(()=>{
-                res.writeHead(200,{"Content-Type":"type/palin"})
+                res.writeHead(200,{"Content-Type":"type/plain"})
                 res.end("Success")
             }).catch(()=>{
                 res.writeHead(200,{"Content":"text/plain"})
@@ -98,4 +99,4 @@ console.log("data added");
         })
     }
 })
-app.listen(PORT);
+app.listen(port);

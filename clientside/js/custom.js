@@ -1,4 +1,4 @@
-async function getdonors(params){
+async function getdonor(params){
     const res=await fetch('http://localhost:3000/getdonor')
     const data=await res.json();
     
@@ -16,14 +16,14 @@ async function getdonors(params){
 
                                <div class="btn"> <button class="btn2" id="btn2" onclick="handleEdit('${Datas._id}')">EDIT</button>
                                 <button class="btn3" id="btn3">SAVE</button>
-                                <button class="btn4" id="btn4" onclick"handleDelete('${Datas._id}')">DELETE</button>
+                                <button class="btn4" id="btn4" onclick="handleDelete('${Datas._id}')">DELETE</button>
                                 </div>
                             </div>`
                 })
                 document.getElementById("display").innerHTML=str
     }
 
-getdonors()
+getdonor()
 
 function handleEdit(_id){
     document.getElementById(`name-${id}`).disabled=false
@@ -41,7 +41,7 @@ async function handleDelete(_id){
     })
     if(res.status==200){
         alert("Success")
-        getdonors()
+        getdonor()
     }
     else{
         alert("Not Success")

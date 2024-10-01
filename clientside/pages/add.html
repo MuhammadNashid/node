@@ -10,40 +10,38 @@
     
     <h1>ADD USERS</h1>
 
-    <div class="main1">                        
-    <table class="t1">
-        <form action="/submit" method="POST">
-            <tr>
-                <td>NAME</td>
-                <td><input type="text" name="name" id="name" class="ip1"></td>
-            </tr>
-            <tr>
-                <td>EMAIL ID </td>
-                <td><input type="email" name="email" id="email" class="ip2"></td>
-            </tr>
-            <tr>
-                <td>PHONE </td>
-                <td><input type="text" name="phone" id="phone" class="ip3"></td>
-            </tr>
-            <tr></tr>
-                <td>BLOOD GROUP </td>
-                <td><input type="text" name="blood" id="blood" class="ip4"></td>
-            </tr>
-            <tr>
-                <td>GENDER </td>
-               <td><input type="radio" name="gender" id="male">
-                <label for="male">Male</label>
-                <input type="radio" name="gender" id="female">
-                <label for="female">Female</label>
-                <input type="radio" name="gender" id="other">
-                <label for="other">Other</label></td>
+    <div class="main">
+        <table>
+            <form action="/submit" method="post">
+               
+                <tr>
+                <td>Name</td>
+                <td><input type="text"  class="txt" name="name" id="name"></td>
+                </tr>
+                            <td>Email</td>
+                            <td><input type="text" class="txt" name="email" id="email"></td>
+                            </tr>
+                            <tr>
+                                <td>Phone</td>
+                                <td><input type="text"  class="txt" name="phone" id="phone"></td>
+                                </tr>
+                                <tr>
+                                    <td>Blood Group</td>
+                                    <td><input type="text" class="txt" name="blood" id="blood"></td>
+                                    </tr>
+                                <tr class="gd">
+                                    <td>Gender</td>
+                                   <td> <input type="radio" name="gender" id="male"  value="male" >
+                                    <label for="male">Male</label>
+                                  <input type="radio" name="gender" id=""  value="female">
+                                    <label for="female">Female</label>
+                                  <input type="radio" name="gender" id=""  value="other">
+                                  <label for="other">Other</label>
+                                </td>
+                                    </tr>
+                                   <tr> <td><button type="/submit">Add Doner</button></td></tr>
+                                   </table> </form></div>
     
-            <button type="/submit" class="b1">ADD DONORS</button>
-            </tr>
-            <tr>       
-        </form>
-    </table>
-    </div>
 
 
 

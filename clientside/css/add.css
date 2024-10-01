@@ -1,31 +1,37 @@
-*{
-    margin: 0;
-}
 body{
-    background-color: black;
-    color: azure;
+    background-color: rgb(193, 197, 201);
+}
+.main{
+    margin-left: 600px;
 }
 h1{
     text-align: center;
     color: brown;
-    text-shadow: 2px 1px;
-    margin: 100px;
 }
-.main1{
-    margin-left: 600PX; 
-    margin-top: 60PX;
-    width: 500px;
-    height: 300px;
-    border: 3px solid grey;
+table{
+    align-items: center;
 }
-.main1>.t1{
-    margin-top: 50px;
+form{
+    align-items: center;
 }
-.b1{
-    float: left;
-    margin-top: 230px;
+.txt{
+    margin: 10px;
+    width: 300px;
+    height: 30px;
+}
+td{
+    font-size: 20px;
+}
+button{
     width: 100px;
-    height: 50px;
-    background-color: green;
-    color: wheat;
+    height: 40px;
+    margin: 10px;
+    background-color: rgb(73, 73, 238);
+    color: aliceblue;
+    border: 1px solid lightblue;
+    border-radius: 6px;
+}
+.gd{
+    height: 20px;
+    width: 20px;
 }

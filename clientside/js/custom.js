@@ -1,49 +1,80 @@
-async function getdonor(params){
-    const res=await fetch('http://localhost:3000/getdonor')
-    const data=await res.json();
+async function getdoner(params) {
+    const res=await fetch("http://localhost:3000/getdoner")
+   const data=await res.json()
+   console.log(data);
+   
+   let str=``
+   data.map((datas)=>{
+    str+=`
+     <div class="sub1">
+    <input class="txt" type="text" id="name-${datas._id}" disabled="true" value="${datas.name}" placeholder="NAME">
+    <input class="txt" type="text" id="email-${datas._id}" disabled="true" value="${datas.email}" placeholder="EMAIL">
+    <input class="txt" type="text" id="phone-${datas._id}" disabled="true" value="${datas.phone}" placeholder="PHONE NUMBER">
+    <input class="txt" type="text" id="blood-${datas._id}" disabled="true" value="${datas.blood}" placeholder="BLOOD GROUP" >
+    <input class="txt" type="text" id="gender-${datas._id}" disabled="true" value="${datas.gender}"placeholder="GENDER">
+
+
+    <button class="btn" type="button" onclick="handleSave('${datas._id}')">Save</button>
+    <button class="btn1" type="button" onclick="handleEdit('${datas._id}')">Edit</button>
+    <button class="btn2" type="button" onclick="handleDelete('${datas._id}')">Delete</button>
+    </div>
     
-   let  str=``
+    
 
-                data.map((Datas)=>{
-                    str+=`<div class="container">
-                            <div class="sub">
-                                <input type="text" id="name-${Datas._id}" disabled="true" value="${Datas.name}" name="" class="a1">
-                                <input type="text" id="email-${Datas._id}" disabled="true" value="${Datas.email}" name="" class="a2">
-                                <input type="text" id="phone-${Datas._id}" disabled="true" value="${Datas.phone}" name="" class="a3">
-                                <input type="text" id="blood-${Datas._id}" disabled="true" value="${Datas.blood}" name="" class="a4">
-                                <input type="text" id="gender-${Datas._id}" disabled="true" value="${Datas.gender}" name="" class="a5">    
-                                </div>
-
-                               <div class="btn"> <button class="btn2" id="btn2" onclick="handleEdit('${Datas._id}')">EDIT</button>
-                                <button class="btn3" id="btn3">SAVE</button>
-                                <button class="btn4" id="btn4" onclick="handleDelete('${Datas._id}')">DELETE</button>
-                                </div>
-                            </div>`
-                })
-                document.getElementById("display").innerHTML=str
-    }
-
-getdonor()
-
-function handleEdit(_id){
+    `
+   })
+   document.getElementById("display").innerHTML=str
+    
+}
+getdoner()
+ function handleEdit(_id){
     document.getElementById(`name-${id}`).disabled=false
     document.getElementById(`email-${id}`).disabled=false
     document.getElementById(`phone-${id}`).disabled=false
     document.getElementById(`blood-${id}`).disabled=false
     document.getElementById(`gender-${id}`).disabled=false
-}
+ }
 
-async function handleDelete(_id){
+  async function handleDelete(_id) {
     let res=await fetch('http://localhost:3000/delete',{
-        method:"DELETE",
-        headers:{"Content-Type":"text/plain"},
-        body:id
+       method:"DELETE",
+       headers:{"content:type":"text/plain"},
+       body:id        
     })
     if(res.status==200){
-        alert("Success")
-        getdonor()
+        alert("success")
+        getdoner()
     }
     else{
-        alert("Not Success")
+        alert("failed")
     }
-}
+  }
+
+  async function handleSave(_id) {
+    console.log(id);
+    const name=document.getElementById(`name-${id}`).value
+    const email=document.getElementById(`email-${id}`).value
+    const phone=document.getElementById(`phone-${id}`).value
+    const bloodgroup=document.getElementById(`blood-${id}`).value
+    const gender=document.getElementById(`gender-${id}`).value
+    console.log(name,email,phone,bloodgroup,gender);
+    const data=(id,name,email,phone,bloodgroup,gender)
+    const res=await fetch("http://localhost:3000/update",{
+        method:"PUT",
+        headers:{"content-type":"text/json"},
+        body:JSON.stringify(data)
+
+    })
+    console.log(res);
+    if(res.status===200)
+    {
+        alert("success")
+        getdoner()
+    }
+    
+    else{
+        alert("failed")
+    }
+    
+    
+  }

@@ -2,8 +2,7 @@ body{
     background-color: rgb(219, 217, 214);
 }
 .main1{
-    /* margin: 40px 100px; */
-   align-items: center;
+    text-align: center;
    gap: 10px;
 }
 h1{
@@ -45,11 +44,17 @@ h1{
 }
 .add1{
     float: right;
-    width: 150px;
+    width: 100px;
     height: 40px;
     color: rgb(252, 243, 243);
-    background-color: rgb(66, 76, 221);
-    border: 1px solid rgb(66, 76, 221);
+    background-color: lightblue;
+    border: 0;
+    box-shadow: 2px 3px black;
     border-radius: 10px;
-    margin-right: 60px;
+    margin-right: 10px;
+    margin-top: -150px;
+}
+.add1>a{
+    text-decoration: none;
+    color: black;
 }

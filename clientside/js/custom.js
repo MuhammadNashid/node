@@ -27,7 +27,7 @@ async function getdoner(params) {
     
 }
 getdoner()
- function handleEdit(_id){
+ function handleEdit(id){
     document.getElementById(`name-${id}`).disabled=false
     document.getElementById(`email-${id}`).disabled=false
     document.getElementById(`phone-${id}`).disabled=false
@@ -35,10 +35,10 @@ getdoner()
     document.getElementById(`gender-${id}`).disabled=false
  }
 
-  async function handleDelete(_id) {
+  async function handleDelete(id) {
     let res=await fetch('http://localhost:3000/delete',{
        method:"DELETE",
-       headers:{"content:type":"text/plain"},
+       headers:{"Content:Type":"text/plain"},
        body:id        
     })
     if(res.status==200){
@@ -50,7 +50,7 @@ getdoner()
     }
   }
 
-  async function handleSave(_id) {
+  async function handleSave(id) {
     console.log(id);
     const name=document.getElementById(`name-${id}`).value
     const email=document.getElementById(`email-${id}`).value

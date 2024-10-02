@@ -25,9 +25,9 @@ if(path.pathname=="/"){
     res.end(fs.readFileSync("../clientside/pages/index.html"))
 }
 
-else if(path.pathname=='/css/index.css'){
+else if(path.pathname=='/css/style.css'){
     res.writeHead(200,{"content-type":"text/css"})
-    res.end(fs.readFileSync("../clientside/css/index.css"))
+    res.end(fs.readFileSync("../clientside/css/style.css"))
 }
 else if(path.pathname=='/add'){
     res.writeHead(200,{"content-type":"text/html"})
@@ -37,13 +37,13 @@ else if(path.pathname=='/css/add.css'){
     res.writeHead(200,{"content-type":"text/css"})
     res.end(fs.readFileSync("../clientside/css/add.css"))
 }
-// else if(path.pathname=='/js/custome.js'){
-//     res.writeHead(200,{"content-type":"text/js"})
-//     res.end(fs.readFileSync("../clientside/js/custome.js"))
-// }
-else if(path.pathname=='/js/index.js'){
+else if(path.pathname=='/js/add.js'){
     res.writeHead(200,{"content-type":"text/js"})
-    res.end(fs.readFileSync("../clientside/js/index.js"))
+    res.end(fs.readFileSync("../clientside/js/add.js"))
+}
+else if(path.pathname=='/js/custom.js'){
+    res.writeHead(200,{"content-type":"text/js"})
+    res.end(fs.readFileSync("../clientside/js/custom.js"))
 }
  else if(path.pathname=="/submit"&&req.method=="POST"){
     // console.log("hai");
@@ -63,7 +63,7 @@ else if(path.pathname=='/js/index.js'){
             }).catch((error)=>{
                 console.log(error); 
             })
-            res.writeHead(200,{"content-type":"text/html"})
+            res.writeHead(200,{"Content-Type":"text/html"})
             res.end(fs.readFileSync("../clientside/pages/index.html")) 
         }
     })
